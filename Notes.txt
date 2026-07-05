@@ -1,0 +1,24 @@
+Docstrings
+    - Documentation for codes
+    - Initialize it by using triple quotation marks and input details about that code.
+
+Storing Functions to a variable
+    - You can store a function to a variable buy using the function name without the parenthesis
+    - Example:
+        my_favorite_function = add   #dont add parenthesis 
+
+There is NO Block Scope in Python
+    - Variables created nested in other blocks of code e.g. for loops, if statements, while loops etc. don't get local scope.
+    - They are given function scope if they are within a function or global scope if they are not.
+
+How to Modify Global Variable from Local Scope
+    - When changing the value of a global variable inside a local scope, put the keyword "global" in front of the variable first.
+    - Note: Avoid modifying global scopes. Instead, use return keyword and assign it the result to the global variable.
+    - Note: Don't name local scope variable the same as the global variable.
+
+Global Constants
+    - Should be named with ALL CAPS.
+    - Not to be modifiable.
+
+Deactivate VENV
+    - type 'deactivate'
