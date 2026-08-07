@@ -1,0 +1,42 @@
+Turtle Documentation
+1. .color() 
+    Assign color
+2. .goto(0,0)
+    Assign position
+3. .forward(), .backward(), .left(), .right()
+    Moves turtle to specific distance, rotates
+4. .clear()
+5. .penup()
+6. .home()
+7. .pendown()
+8. .setheading(90) or .seth(90)
+    90 degrees Up (North), 
+    270 degrees Down (South),
+    0 degrees Right (East),
+    180 degrees Left (West)
+9. .xcor(), .ycor()
+    Grabs the coordinates of the turtle
+
+
+
+Screen Documentation
+1. .onkey(key="", fun=)
+    Assign function to key
+3. .bgcolor()
+    Assign background color
+4. .setup(width=, height=)
+    Assign dimensions to screen
+5. .title()
+    Assign title
+6. .listen()
+    - Listen to keystrokes
+7. .tracer(n=None, delay=None)
+    n - nonnegative integer
+    delay - nonnegative integer
+    Turn turtle animation on/off and set delay for update drawings.
+8. .update()
+
+
+
+
+
