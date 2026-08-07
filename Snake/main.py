@@ -32,6 +32,11 @@ while game_is_on:
     if snake.head.distance(food) < 15:
         scoreboard.add_point()
         food.refresh()
+    
+    # Detect wall collision
+    if snake.head.xcor() > 320 or snake.head.xcor() < -320 or snake.head.ycor() > 320 or snake.head.ycor() < -320:
+        game_is_on = False
+        scoreboard.gameover()
 
 
 # def move_up():
