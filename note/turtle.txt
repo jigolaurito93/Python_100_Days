@@ -29,13 +29,13 @@ Turtle Documentation
 
 Screen Documentation
 1. .onkey(key="", fun=)
-    Assign function to key
+    - Assign function to key
 3. .bgcolor()
-    Assign background color
+    - Assign background color
 4. .setup(width=, height=)
-    Assign dimensions to screen
+    - Assign dimensions to screen
 5. .title()
-    Assign title
+    - Assign title
 6. .listen()
     - Listen to keystrokes
 7. .tracer(n=None, delay=None)
