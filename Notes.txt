@@ -22,3 +22,9 @@ Global Constants
 
 Deactivate VENV
     - type 'deactivate'
+
+Inheritance
+    - 
+    class Fish(Animal):
+        def __init_(self):
+            super().__init__()

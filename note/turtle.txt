@@ -16,6 +16,12 @@ Turtle Documentation
     180 degrees Left (West)
 9. .xcor(), .ycor()
     Grabs the coordinates of the turtle
+10 .shapesize(stretch_len=0.5, stretch_wid=0.5)
+    - Sets the size of the turtle
+11. .speed("fastest")
+    - Sets the speed 
+12. .color()
+    - Sets the color of the turtle
 
 
 
