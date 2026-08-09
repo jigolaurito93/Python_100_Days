@@ -15,3 +15,19 @@ Overwrites the current file with a new text, with inline edit:
     w = write (overwrite file)
 
     if the file you use doesn't exist, it will make a new file for you
+
+.replace()
+    - Replace text with another text
+    txt = "I like bananas"
+    x = txt.replace("bananas", "apples")
+
+.readlines()
+    - return all lines in the file, as a list where each line is an item in the list object
+    f = open("file.txt", "r")
+    print(f.readlines())
+
+.strip()
+    - Removes spaces at the beginning and at the end of the string
+    txt = "    banana    "
+    x = txt.strip()
+    result is: "banana"
