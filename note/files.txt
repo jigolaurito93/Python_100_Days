@@ -1,0 +1,17 @@
+To open, read and close a file:
+
+        with open("file_name.txt") as variable1:
+            variable2 = variable1.read()
+        print(variable2)
+
+Overwrites the current file with a new text, with inline edit:
+
+    with open("current_file.txt", mode="w") as variable1:
+        variable1.write("\nWrite any text here.")
+    
+    By default, mode is "r"
+    r = read 
+    a = append (add text to current file)
+    w = write (overwrite file)
+
+    if the file you use doesn't exist, it will make a new file for you
