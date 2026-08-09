@@ -20,9 +20,16 @@ counter = 0
 game_is_on = True
 while game_is_on:
     counter += 1
-    time.sleep(0.1)
+    time.sleep(0.10)
+    # time.sleep(0.05)
     screen.update()
-    if counter % 6 == 0:
+    # if counter % 6 == 0:
+    if counter % 20 == 0:
         cars.append(CarManager())
     for car in cars:
         car.drive()
+        if player.distance(car) < 27:
+            player.reset()
+        if player.ycor() == 290:
+            player.reset()
+     

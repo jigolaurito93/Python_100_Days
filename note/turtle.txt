@@ -16,7 +16,7 @@ Turtle Documentation
     180 degrees Left (West)
 9. .xcor(), .ycor()
     Grabs the coordinates of the turtle
-10 .shapesize(stretch_len=0.5, stretch_wid=0.5)
+10. .shapesize(stretch_len=0.5, stretch_wid=0.5)
     - Sets the size of the turtle
 11. .speed("fastest")
     - Sets the speed 
@@ -26,6 +26,10 @@ Turtle Documentation
     - Writes text on the screen
 14. .hideturtle()
     - Removes the turtle from the screen
+15. .distance(object)
+    - Condition where it check the distance of one object to another
+    - Use a comparison operator
+    - turtle1.distance(turtle2) > 10
 
 
 

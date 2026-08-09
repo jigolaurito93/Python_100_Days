@@ -14,7 +14,8 @@ class CarManager(Turtle):
         self.color(random.choice(COLORS))
         self.shape("square")
         self.shapesize(stretch_len=2,stretch_wid=1)
-        self.goto(310, random.randint(-230,240))
+        # self.goto(310, random.randint(-210,260))
+        self.goto(310, -200)
         self.setheading(180)
     
     def drive(self):
