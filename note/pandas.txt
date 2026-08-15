@@ -1,0 +1,61 @@
+pandas.read_csv(csv_file)
+    - reads the CSV csv file
+
+panda_file[column_name]
+    - select the entire column of panda_file
+    - Series data
+
+2 data types:
+    Data Frame
+        - The table
+    Series 
+        - The column
+
+pandas.DataFrame(dictionary)
+    - Convert a dictionary into a Data Frame
+
+Data Frame Functions
+    .to_dict()
+        - Converts it to a dictionary
+    .to_csv("name_of_new_file")
+        - Converts Data Frame to CSV and will create a new CSV file within the folder
+    .loc[rows_you_want, column_you_want]
+        - used to filter your rows and pick your columns at the exactly same time
+    csv_data.columns
+        - Used to completely replace your table's headers by assigning a new list of strings to it
+        - df.columns = ["new_col_name1", "new_col_name2"]
+    
+
+Series Functions
+    .to_list()
+        - Converts it to a list
+    .mean()
+        - Gets the average of the list
+    .max()
+        - Gets the max from the list
+    .value_counts()
+        - Scans a column, finds every unique item, counts them, and sorts them
+          from highest to lowest
+        - The unique items are not a data column, they have been turned into the index
+        - Because the colors are trapped in the Index, you cannot easily filter them, rename them, 
+          or save them cleanly to a CSV file
+        - Use .reset_index() to fix this problem. It takes whatever is trapped in the Index row labels, 
+          pulls it out, and turns it into a normal, usable data column. 
+          It then creates a brand new numerical index (0, 1, 2) starting from zero
+    .reset_index()
+        - Takes whatever is trapped in the Index row labels, pulls it out, and turns it into a normal, usable data column. 
+          It then creates a brand new numerical index (0, 1, 2) starting from zero.
+    .loc[]
+        - variable.loc[series_condition].item()
+        - If you want to pull a value from column A where column B matches a specific text string, combine .loc and .item(). 
+          The .item() function strips away the Pandas labels and returns a clean, raw scalar value.
+    .item()
+        - The .item() function strips away the Pandas labels and returns a clean, raw scalar value.
+    .at[] 
+        - variable.at[index, column_name]
+        - If you know the exact index label of the row (e.g., row 0), use .at[row_label, column_name]. 
+          This method is faster than .loc because it is optimized to pull a single value.
+    .iat[]
+        - variable.iat[row_num, col_num]
+        - If your dataset uses names or words as row labels instead of numbers, 
+          use .iat[row_position, column_position] to look up data purely by numeric count (starting from 0).

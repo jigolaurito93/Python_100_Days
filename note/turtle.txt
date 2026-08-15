@@ -22,7 +22,7 @@ Turtle Documentation
     - Sets the speed 
 12. .color()
     - Sets the color of the turtle
-13. .write(arg, move=False, align="left", font=("Arial"m 8, "normal"))
+13. .write(arg, move=False, align="left", font=("Arial" 8, "normal"))
     - Writes text on the screen
 14. .hideturtle()
     - Removes the turtle from the screen
