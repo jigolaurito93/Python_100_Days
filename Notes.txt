@@ -28,3 +28,7 @@ Inheritance
     class Fish(Animal):
         def __init_(self):
             super().__init__()
+
+List Comprehension
+    -  A shorter, cleaner way to create a new list from an existing list or iterable in Python
+    - new_list = [expression for item in iterable if condition]
