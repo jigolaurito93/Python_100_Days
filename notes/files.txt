@@ -31,3 +31,6 @@ Overwrites the current file with a new text, with inline edit:
     txt = "    banana    "
     x = txt.strip()
     result is: "banana"
+
+.split()
+    - Splits each word in a string.
