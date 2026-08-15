@@ -1,5 +1,5 @@
 pandas.read_csv(csv_file)
-    - reads the CSV csv file
+    - reads the csv file
 
 panda_file[column_name]
     - select the entire column of panda_file
@@ -11,7 +11,7 @@ panda_file[column_name]
     Series 
         - The column
 
-pandas.DataFrame(dictionary)
+pandas.DataFrame(dictionary or list)
     - Convert a dictionary into a Data Frame
 
 Data Frame Functions
