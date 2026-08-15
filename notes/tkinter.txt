@@ -1,0 +1,25 @@
+Tkinter
+    - Tkinter is the standard, built-in library in Python used to create Graphical User Interfaces (GUIs).
+
+.mainloop()
+    - A method that tells your Python program to start listening for user interactions 
+      and keeps your application window from immediately closing.
+.title()
+    - Assigns a title to you window
+    - .title("title_here")
+.minsize(width=, height=)
+    - Sets minimum size for window
+
+
+.Label(text=, font=("Arial", 8, "bold"))
+    - A Label is a widget used to display static or dynamic text and images on your user interface.
+    - It is purely informational, meaning users can look at it, but they cannot click it like a button or type inside it like a text box.
+    - variable = Tkinter.Label(text=)
+    - You need to apply .pack() to initialize it
+.pack()
+    - If you call .pack() with no arguments, Tkinter simply stacks your widgets vertically from top to bottom, centered horizontally.
+    - You have to have a Label object first
+    - .pack(expand=1)
+        - Boolean, 0 or 1
+    - .pack(side=)
+        - left, right, top, bottom
