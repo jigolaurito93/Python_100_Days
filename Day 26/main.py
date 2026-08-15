@@ -1,4 +1,5 @@
 import random
+import pandas
 
 # numbers = [1, 2, 3]
 # new_numbers = [n + 1 for n in numbers]
@@ -12,7 +13,17 @@ names = ["Alex", "Beth", "Charlie", "Daniel", "Elizabeth", "Fran", "Grof"]
 # # print(short_names)
 # long_names = [name.upper() for name in names if len(name) >= 5]
 # print(long_names)
-student_scores = {student:random.randint(1,100) for student in names}
-passed_students = {key:value for (key, value) in student_scores.items() if value >= 75}
-print(student_scores)
-print(passed_students)
+# student_scores = {student:random.randint(1,100) for student in names}
+# passed_students = {key:value for (key, value) in student_scores.items() if value >= 75}
+# print(student_scores)
+# print(passed_students)
+
+student_dict = {
+    "student": ["Angela", "James", "Lily"],
+    "score": [56, 76, 98]
+}
+
+student_data_frame  = pandas.DataFrame(student_dict)
+# print(student_data_frame)
+for (index, row) in student_data_frame.iterrows():
+    print(row.student)

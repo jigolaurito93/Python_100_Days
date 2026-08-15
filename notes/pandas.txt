@@ -1,5 +1,6 @@
 pandas.read_csv(csv_file)
     - reads the csv file
+    - Makes it a DataFrame
 
 panda_file[column_name]
     - select the entire column of panda_file
@@ -24,6 +25,15 @@ Data Frame Functions
     csv_data.columns
         - Used to completely replace your table's headers by assigning a new list of strings to it
         - df.columns = ["new_col_name1", "new_col_name2"]
+    .iterrows()
+        - A method used to loop through a DataFrame row by row.
+        - It yields (returns) two things for every row during each iteration of the loop:
+            1. The Index (the row number or label).
+            2. The Row Data (as a Pandas Series, where you can look up values by column names)
+        - 
+            for index, row in df.iterrows():
+                print(index)      # The row number (0, 1, 2...)
+                print(row['column_name'])  # The data in that row for a specific column
     
 
 Series Functions
