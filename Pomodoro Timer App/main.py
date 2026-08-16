@@ -1,4 +1,5 @@
 from tkinter import *
+import math
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -14,7 +15,18 @@ CHECK_MARK_ICON = "✔"
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
+def start_timer():
+    count_down(60 * 25)
+
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+seconds=0
+
+def count_down(count):
+    if count > 0:
+        minutes = math.floor(count / 60)
+        seconds = count % 60
+        canvas.itemconfig(timer_text, text=f"{minutes}:{seconds}")
+        window.after(1000, count_down, count - 1 )
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -22,16 +34,19 @@ window = Tk()
 window.title("Pomodoro Timer App")
 window.config(padx=100, pady=50, bg=YELLOW)
 
+
+
 timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 50))
 timer_label.grid(column=1, row=0)
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="Pomodoro Timer App/tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
-canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+# Timer Text
+timer_text = canvas.create_text(100, 130, text=f"00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
-start_btn = Button(text="Start", highlightthickness=0)
+start_btn = Button(text="Start", highlightthickness=0, command=start_timer)
 start_btn.grid(column=0, row=2)
 
 reset_btn = Button(text="Reset", highlightthickness=0)

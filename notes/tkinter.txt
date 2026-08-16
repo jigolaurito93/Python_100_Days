@@ -21,6 +21,8 @@ Tkinter
     - window.config(padx=, pady=, bg=)
         - Configure padding
         - Configure background color with hexcode
+.after({milliseconds}, {function}, {args})
+    - For timer
 
 
 .Label(text=, font=("Arial", 8, "bold"))
@@ -95,5 +97,7 @@ Canvas(width=, height=, bg=, highlightthickness=0)
     - highlightthickness set to 0 removes the border
     .create_image(x=,y=, image={photoimage_variable})
     .create_text(x=, y=, text=, fill=, font=())
+    .itemconfig(variable, text= )
 PhotoImage(file={path})
     -  built-in class used to load, display, and manipulate raster images (like icons and photos) inside user interface widgets.
+
