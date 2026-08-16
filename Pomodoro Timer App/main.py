@@ -11,7 +11,7 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-CHECK_MARK_ICON = "✔"
+TOMATO_ICON = "🍅"
 BREAK_ICON = "☕"
 REP = 1
 TIMER = 1
@@ -37,10 +37,10 @@ def reset_timer():
 
     for i in range(7):
         if i % 2 == 0:
-            check_mark = Label(text=CHECK_MARK_ICON, fg=RED, bg=YELLOW, font=("Courier", 25))
+            check_mark = Label(text=TOMATO_ICON, fg=RED, bg=YELLOW, font=("Courier", 30))
             ICONS.append(check_mark)
         elif i % 2 == 1:
-            check_mark = Label(text=BREAK_ICON, bg=YELLOW, font=("Courier", 25))
+            check_mark = Label(text=BREAK_ICON, bg=YELLOW, font=("Courier", 26))
             ICONS.append(check_mark)
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
@@ -53,19 +53,25 @@ def start_timer():
 
     # WORK MINUTES
     if REP in (1, 3, 5):
+            timer_label["text"] = "Timer"
+            timer_label["fg"] = GREEN
             ICONS[REP-1].place(x=(REP-1)*80 + 22, y=400)
             canvas.itemconfig(timer_text, fill="white")
             count_down(60 * WORK_MIN)
 
     # SHORT BREAK
     elif REP in (2, 4):
+            timer_label["text"] = "Break"
+            timer_label["fg"] = PINK
             ICONS[REP-1].place(x=(REP-1)*80 + 15, y=400)
             canvas.itemconfig(timer_text, fill="#2ecc71")
-            count_down(60 * SHORT_BREAK_MIN)
+
     # LONG BREAK
     elif REP == 6:
+            timer_label["text"] = "Break"
             ICONS[REP-1].place(x=(REP-1)*80 + 22, y=400)
             count_down(60 * LONG_BREAK_MIN)
+
     elif REP == 0:
         REP = 1
 
@@ -94,7 +100,7 @@ window = Tk()
 window.title("Pomodoro Timer App")
 window.config(padx=100, pady=120, bg=YELLOW)
 
-timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 50))
+timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 50, "bold"))
 timer_label.grid(column=1, row=0)
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
@@ -139,10 +145,10 @@ reset_btn.grid(column=2, row=2)
 
 for i in range(7):
     if i % 2 == 0:
-       check_mark = Label(text=CHECK_MARK_ICON, fg=RED, bg=YELLOW, font=("Courier", 25))
+       check_mark = Label(text=TOMATO_ICON, fg=RED, bg=YELLOW, font=("Courier", 30))
        ICONS.append(check_mark)
     elif i % 2 == 1:
-        check_mark = Label(text=BREAK_ICON, bg=YELLOW, font=("Courier", 25))
+        check_mark = Label(text=BREAK_ICON, bg=YELLOW, font=("Courier", 26))
         ICONS.append(check_mark)
 
 window.mainloop()
