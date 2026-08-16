@@ -32,3 +32,12 @@ Inheritance
 List Comprehension
     -  A shorter, cleaner way to create a new list from an existing list or iterable in Python
     - new_list = [expression for item in iterable if condition]
+
+*args
+    - Allows your function to accept any number of positional arguments (arguments passed without a name, like 1, 2, 3)
+    - The single asterisk * tells Python to bundle all incoming extra arguments into a tuple
+**kwargs 
+    - Allows your function to accept any number of keyword arguments (arguments passed with a name, like x=5, y=10)
+    - The double asterisk ** tells Python to bundle all incoming extra keyword arguments into a dictionary
+.get()
+    - Used to grab the Key inside **kwargs and returns null if there's no value. (No syntax error)

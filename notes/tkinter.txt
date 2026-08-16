@@ -1,14 +1,25 @@
 Tkinter
     - Tkinter is the standard, built-in library in Python used to create Graphical User Interfaces (GUIs).
 
+.Tk()
+    - Creates a new window and configurations
+    - window = Tk()
+
+
 .mainloop()
     - A method that tells your Python program to start listening for user interactions 
-      and keeps your application window from immediately closing.
+      and keeps your application window from immediately closing
+    - window.mainloop()
 .title()
     - Assigns a title to you window
-    - .title("title_here")
+    - window.title("title_here")
 .minsize(width=, height=)
     - Sets minimum size for window
+    - window.minsize()
+.config()
+    - Configure attributes
+    - window.config(padx=, pady=)
+        - Configure padding
 
 
 .Label(text=, font=("Arial", 8, "bold"))
@@ -23,3 +34,57 @@ Tkinter
         - Boolean, 0 or 1
     - .pack(side=)
         - left, right, top, bottom
+    - Can't mix pack() and grid()
+.place(x=, y=)
+    - Position the widget with X and Y axis
+.grid(column=, row=)
+    - Sets the position by column and rows
+    - Can't mix pack() and grid()
+
+
+
+.Button()
+    - A widget for buttons
+    - text= add text 
+    - command= add function
+
+.Entry()
+    - Widget for textbox
+entry.get()
+    - Grabs the value that was input in the textbox
+entry.insert(END, string=)
+    - Add some text to begin with
+
+.Text()
+    - Widget for multi-textbox
+    - height=, width=
+text.focus()
+    - Puts cursor in textbox
+text.insert(END, "string_here")
+    - Add some text to begin with
+
+.Spinbox(from_=0, to=10, width=5, command=function)
+    -
+        def spinbox_used():
+            print(spinbox.get())
+
+.Scale(from_=0, to=10, command=function)
+    - Widget for scaling (up-down)
+
+.Checkbutton(text=, variable=checked_state, command=function)
+    - 
+        checked_state = IntVar()
+
+.Radiobutton(text=, value=, variable=, command=)
+    - radio_state = IntVar()
+    - Use radio_state variable to multiple radio buttons
+    - 
+        def radio_used():
+            print(radio_state.get())
+
+.Listbox(height=)
+    - for item in list:
+            listbox.insert(item.index(item), item)
+.bind("<<ListboxSelect>>", listbox_used)
+    def listbox_used(event):
+        print(listbox.get(listbox.curselection()))
