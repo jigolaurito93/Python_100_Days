@@ -18,8 +18,9 @@ Tkinter
     - window.minsize()
 .config()
     - Configure attributes
-    - window.config(padx=, pady=)
+    - window.config(padx=, pady=, bg=)
         - Configure padding
+        - Configure background color with hexcode
 
 
 .Label(text=, font=("Arial", 8, "bold"))
@@ -88,3 +89,11 @@ text.insert(END, "string_here")
 .bind("<<ListboxSelect>>", listbox_used)
     def listbox_used(event):
         print(listbox.get(listbox.curselection()))
+
+Canvas(width=, height=, bg=, highlightthickness=0)
+    - Canvas object is a blank, widget-based surface used for drawing structured graphics, shapes, images, and animations.
+    - highlightthickness set to 0 removes the border
+    .create_image(x=,y=, image={photoimage_variable})
+    .create_text(x=, y=, text=, fill=, font=())
+PhotoImage(file={path})
+    -  built-in class used to load, display, and manipulate raster images (like icons and photos) inside user interface widgets.
