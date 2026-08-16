@@ -1,8 +1,8 @@
-from ast import Global
 from tkinter import *
 import math
-import time
+
 # ---------------------------- CONSTANTS ------------------------------- #
+
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
@@ -14,56 +14,76 @@ LONG_BREAK_MIN = 20
 CHECK_MARK_ICON = "✔"
 BREAK_ICON = "☕"
 REP = 1
-
+TIMER = 1
+ICONS = []
 
 # ---------------------------- TIMER RESET ------------------------------- # 
+
+def reset_timer():
+    global TIMER, ICONS, REP
+
+    if TIMER is not None and TIMER != 1:
+        window.after_cancel(TIMER)
+
+    TIMER = 1
+    REP = 1
+
+
+    canvas.itemconfig(timer_text, text="00:00", fill="white")
+    timer_label.config(text="Timer", fg=GREEN)
+    for label in ICONS:
+        label.destroy()
+    ICONS = []
+
+    for i in range(7):
+        if i % 2 == 0:
+            check_mark = Label(text=CHECK_MARK_ICON, fg=RED, bg=YELLOW, font=("Courier", 25))
+            ICONS.append(check_mark)
+        elif i % 2 == 1:
+            check_mark = Label(text=BREAK_ICON, bg=YELLOW, font=("Courier", 25))
+            ICONS.append(check_mark)
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 def start_timer():
-    global REP
+    global REP, TIMER   
+
+    if TIMER is None:
+        return
 
     # WORK MINUTES
     if REP in (1, 3, 5):
-            icons[REP-1].place(x=(REP-1)*40 + 10, y=350)
+            ICONS[REP-1].place(x=(REP-1)*80 + 22, y=400)
             canvas.itemconfig(timer_text, fill="white")
-            count_down(3)
+            count_down(60 * WORK_MIN)
+
     # SHORT BREAK
     elif REP in (2, 4):
-            icons[REP-1].place(x=(REP-1)*40 + 3, y=350)
+            ICONS[REP-1].place(x=(REP-1)*80 + 15, y=400)
             canvas.itemconfig(timer_text, fill="#2ecc71")
-            count_down(5)
+            count_down(60 * SHORT_BREAK_MIN)
     # LONG BREAK
     elif REP == 6:
-            icons[REP-1].place(x=(REP-1)*40 + 10, y=350)
-            count_down(6)
-
-    # # WORK MINUTES
-    # if REP in (1, 3, 5):
-    #         count_down(60 * WORK_MIN)
-    # # SHORT BREAK
-    # elif REP in (2, 4,):
-    #         count_down(60 * SHORT_BREAK_MIN)
-    # # LONG BREAK
-    # elif REP == 6:
-    #         count_down(60 * LONG_BREAK_MIN)
-
+            ICONS[REP-1].place(x=(REP-1)*80 + 22, y=400)
+            count_down(60 * LONG_BREAK_MIN)
+    elif REP == 0:
+        REP = 1
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
-seconds=0
+
 
 def count_down(count):
-    global REP
+    global REP, TIMER
     minutes = math.floor(count / 60)
     seconds = count % 60
 
     canvas.itemconfig(timer_text, text=f"{minutes:02d}:{seconds:02d}")
     
     if count > 0:
-        window.after(1000, count_down, count - 1 )
+        TIMER = window.after(1000, count_down, count - 1 )
     elif count == 0:
         REP += 1
-        window.after(1000, start_timer)
+        TIMER = window.after(1000, start_timer)
 
 def display_icon():
     pass
@@ -73,8 +93,6 @@ def display_icon():
 window = Tk()
 window.title("Pomodoro Timer App")
 window.config(padx=100, pady=120, bg=YELLOW)
-
-
 
 timer_label = Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 50))
 timer_label.grid(column=1, row=0)
@@ -87,7 +105,7 @@ timer_text = canvas.create_text(100, 130, text=f"00:00", fill="white", font=(FON
 canvas.grid(column=1, row=1)
 
 start_btn = Button(
-    text="Start Break",
+    text="Start",
     font=("Arial", 14, "bold"), 
     fg="white", 
     bg="#2ecc71", 
@@ -113,22 +131,18 @@ reset_btn = Button(
     relief="ridge", 
     bd=0, 
     width=12,
-    height=2)
+    height=2,
+    command=reset_timer)
 reset_btn.grid(column=2, row=2)
 
-icons = []
+
 
 for i in range(7):
     if i % 2 == 0:
        check_mark = Label(text=CHECK_MARK_ICON, fg=RED, bg=YELLOW, font=("Courier", 25))
-       icons.append(check_mark)
+       ICONS.append(check_mark)
     elif i % 2 == 1:
         check_mark = Label(text=BREAK_ICON, bg=YELLOW, font=("Courier", 25))
-        icons.append(check_mark)
-
-
-
-
-
+        ICONS.append(check_mark)
 
 window.mainloop()
