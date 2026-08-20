@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from turtle import width
 
 FONT = ("Arial", 12, "bold")
@@ -11,12 +12,15 @@ def save():
     email = email_textbox.get()
     password = password_textbox.get()
 
-    with open("Password Manager/data.txt", mode="a") as pw_data:
-        pw_data.write(f"{website} | {email} | {password} \n")
-    
-    website_textbox.delete(0, END)
-    email_textbox.delete(0, END)
-    password_textbox.delete(0, END)
+    is_okay = messagebox.askokcancel(title=website, message=f"These are the details entered: \n\nEmail: {email} \nPassword: {password} \n\nIs it okay to save?")
+
+    if is_okay:
+        with open("Password Manager/data.txt", mode="a") as pw_data:
+            pw_data.write(f"{website} | {email} | {password} \n")
+        
+            website_textbox.delete(0, END)
+            email_textbox.delete(0, END)
+            password_textbox.delete(0, END)
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")

@@ -108,3 +108,13 @@ Canvas(width=, height=, bg=, highlightthickness=0)
 PhotoImage(file={path})
     -  built-in class used to load, display, and manipulate raster images (like icons and photos) inside user interface widgets.
 
+messagebox
+    - Add a pop up screen that shows message
+    - You have to import messagebox from tkinter
+    - Returns boolean value
+    .showinfo(title=, message=, options)
+    .askyesno(title=, message=, options)
+    .askretrycancel(title=, message=, options)
+    .askquestion(title=, message=, options)
+    .askyesnocancel(title=, message=, options)
+    .askokcancel(title=, message=, options)
