@@ -2,6 +2,7 @@ from email import message
 from tkinter import *
 from tkinter import messagebox
 import pyperclip
+import json
 
 FONT = ("Arial", 12, "bold")
 
@@ -39,6 +40,13 @@ def save():
     email = email_textbox.get()
     password = password_textbox.get()
 
+    new_json_data = {
+        website : {
+            "email" : email,
+            "password" : password,
+        }
+    }
+
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
         messagebox.showinfo(title="Error", message="Please don't leave any fields empty.")
         return
@@ -46,9 +54,24 @@ def save():
     is_okay = messagebox.askokcancel(title=website, message=f"These are the details entered: \n\nEmail: {email} \nPassword: {password} \n\nIs it okay to save?")
 
     if is_okay:
-        with open("Password Manager/data.txt", mode="a") as pw_data:
-            pw_data.write(f"{website} | {email} | {password} \n")
-        
+        # If file exist, read the file and update with new json data
+        try:
+            with open("Password Manager/data.json", mode="r") as pw_data:
+                # Read old data
+                data = json.load(pw_data)
+
+        # If file doesn't exist, create a new file
+        except FileNotFoundError:
+            with open("Password Manager/data.json", mode="w") as pw_data:
+                data = json.dump(new_json_data, pw_data, indent=4)
+
+        # If file does exist, add replace json file with new one
+        else:
+            # Save updated data
+            data.update(new_json_data)
+            with open("Password Manager/data.json", mode="w") as pw_data:
+                json.dump(data, pw_data, indent=4)
+        finally:
             website_textbox.delete(0, END)
             email_textbox.delete(0, END)
             password_textbox.delete(0, END)

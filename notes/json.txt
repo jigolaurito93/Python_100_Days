@@ -1,0 +1,21 @@
+JSON
+
+Write
+    json.dump(json_value, file_to_add_to, indent=number_of_indentations)
+
+Read
+    json.load(file_name)
+    - Set mode to "r"
+    - Save it to a variable
+Update
+    json.update()
+    - Updates the current json file
+    Steps:
+        # Read old data
+        # Set mode to "r" read mode
+        data = json.load(data_file)
+        data.update(new_data)
+
+        # Save updated data
+        # Set another file to "w" write mode
+        json.dump(data, data_file, indent=4)
