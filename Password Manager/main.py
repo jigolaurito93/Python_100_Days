@@ -5,6 +5,28 @@ import pyperclip
 import json
 
 FONT = ("Arial", 12, "bold")
+# ---------------------------- SEARCH WEBSITE ------------------------------- #
+def find_password():
+    website = website_textbox.get().title()
+
+    # NO DATA FILE FOUND
+    try:
+        with open("Password Manager/data.json", "r") as pw_data:
+            data = json.load(pw_data)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="No Data File Found")
+        return
+    # NO DETAILS FOR THE WEBSITE
+    else:
+        try:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email} \nPassword: {password}")
+        except KeyError as error_message:
+            messagebox.showinfo(title="Error", message=f"No details for the {website} exist")
+            return
+
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 import random
@@ -36,7 +58,7 @@ def generate_password():
     
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
-    website = website_textbox.get()
+    website = website_textbox.get().title()
     email = email_textbox.get()
     password = password_textbox.get()
 
@@ -94,8 +116,8 @@ password_label = Label(text="Password:")
 password_label.grid(column=0, row=3, padx=(0,5), sticky="e")
 
 # Textbox
-website_textbox = Entry(width=35)
-website_textbox.grid(column=1, row=1, columnspan=2, sticky="ew", pady=(0,5))
+website_textbox = Entry(width=21)
+website_textbox.grid(column=1, row=1, sticky="ew", padx=(0, 5), pady=(0,5))
 website_textbox.focus()
 email_textbox = Entry(width=35)
 email_textbox.grid(column=1, row=2, columnspan=2, sticky="ew", pady=(0,5))
@@ -103,6 +125,8 @@ password_textbox = Entry(width=21)
 password_textbox.grid(column=1, row=3, sticky="ew", padx=(0, 5), pady=(0,5))
 
 # Buttons
+search_btn = Button(text="Search", command=find_password)
+search_btn.grid(column=2, row=1, sticky="ew", pady=(0,5))
 generate_password_btn = Button(text="Generate Password", command=generate_password)
 generate_password_btn.grid(column=2, row=3, sticky="e", pady=(0,5))
 submit_btn = Button(text="Add", width=36, command=save)
