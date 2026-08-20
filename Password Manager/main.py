@@ -6,7 +6,17 @@ FONT = ("Arial", 12, "bold")
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+def save():
+    website = website_textbox.get()
+    email = email_textbox.get()
+    password = password_textbox.get()
 
+    with open("Password Manager/data.txt", mode="a") as pw_data:
+        pw_data.write(f"{website} | {email} | {password} \n")
+    
+    website_textbox.delete(0, END)
+    email_textbox.delete(0, END)
+    password_textbox.delete(0, END)
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -37,7 +47,7 @@ password_textbox.grid(column=1, row=3, sticky="ew", padx=(0, 5), pady=(0,5))
 # Buttons
 generate_password_btn = Button(text="Generate Password")
 generate_password_btn.grid(column=2, row=3, sticky="e", pady=(0,5))
-submit_btn = Button(text="Add", width=36)
+submit_btn = Button(text="Add", width=36, command=save)
 submit_btn.grid(column=1, row=4, columnspan=2, sticky="ew")
 
 

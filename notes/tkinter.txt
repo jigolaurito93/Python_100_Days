@@ -44,6 +44,9 @@ Tkinter
     - Sets the position by column and rows
     - Can't mix pack() and grid()
     - columnspan attribute = value is how many columns you want it to stretch to
+    sticky = position the widget, (e, w, n, s, ew, ns)
+    padx, pady = padding for top-bottom or left-right
+    padx=(2,4) = padding specific sides
 
 
 
@@ -60,6 +63,7 @@ entry.insert(END, string=)
     - Add some text to begin with
 entry.focus()
     - Puts cursor in textbox
+entry.delete(index of cursor, END ) "from index to END, delete text"
 
 .Text()
     - Widget for multi-textbox
