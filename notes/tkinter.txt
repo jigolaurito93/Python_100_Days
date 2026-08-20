@@ -29,7 +29,7 @@ Tkinter
     - A Label is a widget used to display static or dynamic text and images on your user interface.
     - It is purely informational, meaning users can look at it, but they cannot click it like a button or type inside it like a text box.
     - variable = Tkinter.Label(text=)
-    - You need to apply .pack() to initialize it
+    - You need to apply .pack() to initialize it or .grid() or .place()
 .pack()
     - If you call .pack() with no arguments, Tkinter simply stacks your widgets vertically from top to bottom, centered horizontally.
     - You have to have a Label object first
@@ -43,6 +43,7 @@ Tkinter
 .grid(column=, row=)
     - Sets the position by column and rows
     - Can't mix pack() and grid()
+    - columnspan attribute = value is how many columns you want it to stretch to
 
 
 
@@ -57,6 +58,8 @@ entry.get()
     - Grabs the value that was input in the textbox
 entry.insert(END, string=)
     - Add some text to begin with
+entry.focus()
+    - Puts cursor in textbox
 
 .Text()
     - Widget for multi-textbox
